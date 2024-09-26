@@ -11,10 +11,10 @@ basically, it will sync from your current machine to target machine
 chmod +x ./sync.sh
 
 # If you want to delete those not existing files
-./sync.sh 172.21.148.240 true
+./sync.sh 172.21.148.240 172.21.148.163 true
 
 # No delete, only sync
-./sync.sh 172.21.148.240
+./sync.sh 172.21.148.240 172.21.148.163 false
 ```
 ## Using curl to run
 
@@ -22,8 +22,8 @@ chmod +x ./sync.sh
 curl -s https://raw.githubusercontent.com/Mai0313/sync/master/sync.sh | bash
 
 # If you want to delete those not existing files
-curl -s https://raw.githubusercontent.com/Mai0313/sync/master/sync.sh | bash -s -- 172.21.148.163 true
+curl -s https://raw.githubusercontent.com/Mai0313/sync/master/sync.sh | bash -s -- 172.21.148.240 172.21.148.163 true
 
 # No delete, only sync
-curl -s https://raw.githubusercontent.com/Mai0313/sync/master/sync.sh | bash -s -- 172.21.148.163
+curl -s https://raw.githubusercontent.com/Mai0313/sync/master/sync.sh | bash -s -- 172.21.148.240 172.21.148.163 false
 ```
