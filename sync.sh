@@ -9,9 +9,9 @@ EXCLUDE_FOLDERS=()  # 在這裡添加你要排除的資料夾
 echo "Syncing files to $USERNAME's home directory on $TARGET_IP"
 
 # 構建 --exclude 選項
-EXCLUDE_OPTIONS=()
+EXCLUDE_OPTIONS=""
 for folder in "${EXCLUDE_FOLDERS[@]}"; do
-    EXCLUDE_OPTIONS+=("--exclude=$folder")
+    EXCLUDE_OPTIONS+="--exclude='$folder' "
 done
 
 # 構建 --delete 選項
@@ -26,10 +26,11 @@ echo "Delete not exist: $DELETE_NOT_EXIST"
 # 構建來源目錄
 SOURCE_DIR=""
 if [ "$SOURCE_IP" = "$(hostname -I | awk '{print $1}')" ]; then
-    SOURCE_DIR="~"
+    SOURCE_DIR="~/"
 else
-    SOURCE_DIR="$USERNAME@$SOURCE_IP:~"
+    SOURCE_DIR="$USERNAME@$SOURCE_IP:~/"
 fi
 
-# 使用 rsync 同步檔案，包含隱藏文件和文件夾
-rsync -avz "${EXCLUDE_OPTIONS[@]}" $DELETE_OPTION --include='.*' --include='*/' --exclude='*' $SOURCE_DIR/ $USERNAME@$TARGET_IP:~/
+echo "Source directory: $SOURCE_DIR"
+
+eval rsync -avz --progress $EXCLUDE_OPTIONS $DELETE_OPTION $SOURCE_DIR $USERNAME@$TARGET_IP:~/
