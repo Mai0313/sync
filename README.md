@@ -10,10 +10,20 @@ basically, it will sync from your current machine to target machine
 ```bash
 chmod +x ./sync.sh
 
-./sync.sh 172.21.148.240  # the ip here is the target machine ip.
+# If you want to delete those not existing files
+./sync.sh 172.21.148.240 true
+
+# No delete, only sync
+./sync.sh 172.21.148.240
 ```
 ## Using curl to run
 
 ```bash
 curl -s https://raw.githubusercontent.com/Mai0313/sync/master/sync.sh | bash
+
+# If you want to delete those not existing files
+curl -s https://raw.githubusercontent.com/Mai0313/sync/master/sync.sh | bash -s -- 172.21.148.163 true
+
+# No delete, only sync
+curl -s https://raw.githubusercontent.com/Mai0313/sync/master/sync.sh | bash -s -- 172.21.148.163
 ```
