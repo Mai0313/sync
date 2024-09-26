@@ -1,9 +1,9 @@
 #!/bin/bash
 
 USERNAME=$(whoami)  # 取得用戶名稱
-SOURCE_IP=${1:-$(hostname -I | awk '{print $1}')}  # 來自哪台機器，如果沒有提供，則使用當前機器的 IP 地址
-TARGET_IP=${2:-172.21.148.163}  # 同步到哪台機器
-DELETE_NOT_EXIST=${3:-false}  # 默認不刪除目標目錄中來源目錄沒有的檔案
+SOURCE_IP=${SOURCE_IP:-$(hostname -I | awk '{print $1}')}  # 來自哪台機器，如果沒有提供，則使用當前機器的 IP 地址
+TARGET_IP=${TARGET_IP:-172.21.148.163}  # 同步到哪台機器
+DELETE_NOT_EXIST=${DELETE_NOT_EXIST:-false}  # 默認不刪除目標目錄中來源目錄沒有的檔案
 EXCLUDE_FOLDERS=('.ssh')  # 在這裡添加你要排除的資料夾
 
 echo "Syncing files to $USERNAME's home directory on $TARGET_IP"
