@@ -9,7 +9,7 @@ EXCLUDE_FOLDERS=(**/.venv **/__pycache__ **/.cache)  # 在這裡添加你要排�
 # 構建 --exclude 選項
 EXCLUDE_OPTIONS=""
 for folder in "${EXCLUDE_FOLDERS[@]}"; do
-    EXCLUDE_OPTIONS+="--exclude='$folder' "
+    EXCLUDE_OPTIONS+="--exclude=\"$folder\" "
 done
 
 # 構建 --delete 選項
