@@ -31,4 +31,6 @@ echo "Excluding folders: ${EXCLUDE_FOLDERS[@]}"
 echo "Delete not exist: $DELETE_NOT_EXIST"
 echo "Source directory: $SOURCE_DIR"
 
+echo "rsync -avz --progress $EXCLUDE_OPTIONS $DELETE_OPTION $SOURCE_DIR $USERNAME@$TARGET_IP:~/"
+
 eval rsync -avz --progress $EXCLUDE_OPTIONS $DELETE_OPTION $SOURCE_DIR $USERNAME@$TARGET_IP:~/
